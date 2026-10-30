@@ -2,11 +2,11 @@
   "name": "aurex-task-manager-backend",
   "version": "1.0.0",
   "description": "Authenticated Task Management API (Express, MongoDB, JWT, bcrypt)",
-  "main": "src/server.js",
+  "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "node src/start.js",
+    "dev": "nodemon src/start.js",
     "test:api": "node tests/api-test.js"
   },
   "dependencies": {

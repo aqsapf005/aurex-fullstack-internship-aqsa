@@ -1,20 +1,26 @@
 import mongoose from 'mongoose'
 
+// On Vercel the code runs as short-lived serverless functions that can be re-used.
+// We cache the connection so every request does not open a brand-new one.
+const cache = globalThis.__mongooseCache || (globalThis.__mongooseCache = { promise: null })
+
 const connectDB = async () => {
-  if (!process.env.MONGODB_URI) {
-    console.error('MONGODB_URI is missing. Copy .env.example to .env and fill it in.')
-    process.exit(1)
-  }
-  if (!process.env.JWT_SECRET) {
-    console.error('JWT_SECRET is missing. Add a long random string to your .env file.')
-    process.exit(1)
+  if (!process.env.MONGODB_URI) throw new Error('MONGODB_URI is missing')
+  if (!process.env.JWT_SECRET) throw new Error('JWT_SECRET is missing')
+
+  if (mongoose.connection.readyState === 1) return // already connected
+
+  if (!cache.promise) {
+    cache.promise = mongoose.connect(process.env.MONGODB_URI).then((conn) => {
+      console.log(`MongoDB connected: ${conn.connection.host}`)
+      return conn
+    })
   }
   try {
-    const conn = await mongoose.connect(process.env.MONGODB_URI)
-    console.log(`MongoDB connected: ${conn.connection.host}`)
+    await cache.promise
   } catch (error) {
-    console.error('MongoDB connection failed:', error.message)
-    process.exit(1)
+    cache.promise = null // allow a retry on the next request
+    throw error
   }
 }
 
