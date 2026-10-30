@@ -1,0 +1,16 @@
+.app-header { text-align: center; margin-bottom: 20px; }
+.app-header h1 { font-size: 2rem; color: var(--primary); margin-bottom: 4px; }
+
+.task-form { margin-bottom: 20px; }
+.task-form-row { display: flex; gap: 10px; }
+.task-form-row input { flex: 1; }
+
+.task-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.task-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; }
+.task-check { display: flex; align-items: center; gap: 10px; margin: 0; font-weight: 500; cursor: pointer; flex: 1; word-break: break-word; }
+.task-check input { width: 18px; height: 18px; margin: 0; flex-shrink: 0; }
+.task-item.done .task-title { text-decoration: line-through; color: var(--muted); }
+
+@media (max-width: 480px) {
+  .task-form-row { flex-direction: column; }
+}
