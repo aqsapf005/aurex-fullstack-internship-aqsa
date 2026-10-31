@@ -74,3 +74,12 @@ Import `postman_collection.json` (Postman → Import). It contains successful **
 
 ## Learning summary / Blockers
 <!-- Write these in your own words -->
+
+
+---
+
+## Learning summary
+I built a REST API with Node.js, Express, MongoDB Atlas and Mongoose. I learned how a request flows from route to controller to model to database, how to validate data with a schema, and how to return correct status codes (201, 200, 400, 404). I tested every endpoint in Postman, including failing cases.
+
+## Challenges
+Connecting to MongoDB Atlas took the most time. First I got a connection error because the placeholders in my .env file were not replaced. Then I got "bad auth" because the username or password was wrong. I fixed it by checking the database user in Atlas and allowing my IP in Network Access. I learned that .env must never be pushed to GitHub.

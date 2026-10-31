@@ -89,3 +89,19 @@ Deploy order: Atlas → backend → frontend → then set `CLIENT_URL` on the ba
 
 ## Live links, screenshots, challenges, what I learned
 <!-- Fill these in with your own words and links -->
+
+
+---
+
+## Live links
+- Frontend: https://aurex-task-manager-frontendaqsa.vercel.app
+- Backend: https://aurex-task-manager-backend.vercel.app
+
+## Learning summary
+I built a full-stack app with React, Express, MongoDB and JWT login. I learned how passwords are hashed with bcrypt, how a JWT is created at login, and how a protect middleware checks the token on every private route. Every task stores its owner, so one user cannot see or change another user's tasks. On the frontend I used a Context for the logged-in user and one API helper that adds the token to every request.
+
+## Challenges
+- While testing register in Postman I got "Route not found" because the old Week 3 server was still running on port 5000. I stopped it and started the Week 4 server.
+- Render asked for a card, so I deployed the backend on Vercel instead. For that I split the backend into app.js (the Express app) and start.js (local server).
+- On Vercel I had to select the correct Root Directory, set the environment variables, and set CLIENT_URL to my frontend link so the browser is allowed to call the API (CORS).
+- A Vite variable like VITE_API_URL is public, so it has to be a normal variable, not a secret.

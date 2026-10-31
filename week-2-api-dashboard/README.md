@@ -54,3 +54,15 @@ npm run dev
 
 ## Live demo / Screenshots / Learning summary
 <!-- Add your deployment link, screenshots and your own learning summary -->
+
+
+---
+
+## Live demo
+https://aurex-week2-api-dashboard-drab.vercel.app
+
+## Learning summary
+I connected a React app to a REST API (JSONPlaceholder) using fetch. I learned GET, POST, PUT and DELETE, using useEffect to load data when the page opens, and showing loading, error and empty states. I also added search and a city filter, and an add/edit form.
+
+## Challenges
+I learned that fetch does not fail on a 404 or 500 response, so I check response.ok myself. JSONPlaceholder is a fake API, so added or edited users are not really saved on the server, and I handled that in the app.
